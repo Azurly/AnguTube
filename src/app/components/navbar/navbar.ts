@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { Searchbar } from "../searchbar/searchbar";
-import { Auth } from '../../services/auth';
+import { Users } from '../../services/users';
 
 @Component({
   selector: 'app-navbar',
@@ -10,5 +10,5 @@ import { Auth } from '../../services/auth';
   styleUrl: './navbar.css',
 })
 export class Navbar {
-  auth = inject(Auth);
+  user = inject(Users);
 }

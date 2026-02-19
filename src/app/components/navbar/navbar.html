@@ -8,10 +8,11 @@
         <app-searchbar></app-searchbar>
     </ul>
     <div class="flex flex-row gap-3">
-        @if (auth.isLoggedIn()) {
+        @if (user.isLoggedIn()) {
             <a routerLink="/profile">
                 <button class="btn">Profile</button>
             </a>
+            <button class="btn" (click)="user.logout()">Logout</button>
         } @else {
             <a routerLink="/login">
                 <button class="btn">Login</button>

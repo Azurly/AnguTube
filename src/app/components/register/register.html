@@ -4,15 +4,15 @@
         <legend class="fieldset-legend text-lg font-bold">Register</legend>
 
         <label class="label">Username
-        <input type="text" class="input" placeholder="Username" /></label>
+        <input type="text" class="input" placeholder="Username" #username /></label>
 
         <label class="label">Email
-        <input type="email" class="input" placeholder="Email" /></label>
+        <input type="email" class="input" placeholder="Email" #email /></label>
 
         <label class="label">Password
-        <input type="password" class="input" placeholder="Password" /></label>
+        <input type="password" class="input" placeholder="Password" #password /></label>
 
-        <button class="btn bg-linear-to-r from-red-500 to-pink-400 mt-4 text-white ">Register</button>
+        <button class="btn bg-linear-to-r from-red-500 to-pink-400 mt-4 text-white" (click)="register(username.value, email.value, password.value)">Register</button>
         </fieldset>
     </form>
 </section>

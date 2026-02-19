@@ -6,6 +6,7 @@ export interface User {
   email: string;
   password: string;
   playlists: number[];
+  isAuthenticated?: boolean;
 }
 
 @Injectable({
@@ -13,6 +14,9 @@ export interface User {
 })
 
 export class Users {
+  
+  private isAuthenticated = false;
+  
   private readonly users: User[] = [
     {
       id: 1,
@@ -40,5 +44,28 @@ export class Users {
 
   getUserById(id: number): User | undefined {
     return this.users.find(user => user.id === id);
+  }
+
+  createUser(username: string, email: string, password: string): User {
+    const newUser: User = {
+      id: this.users.length + 1,
+      username,
+      email,
+      password,
+      playlists: []
+    };
+    this.users.push(newUser);
+    return newUser;
+  }
+
+  login() {
+    this.isAuthenticated = true;
+  }
+
+  logout() {
+    this.isAuthenticated = false;
+  }
+  isLoggedIn(): boolean {
+    return this.isAuthenticated;
   }
 }
