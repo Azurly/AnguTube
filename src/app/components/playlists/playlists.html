@@ -1,1 +1,19 @@
-<p>playlists works!</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+  @for (playlist of playlists; track playlist.id) {
+    <div class="card bg-base-100 w-96 shadow-sm">
+      <figure>
+        <img
+          [src]="playlist.thumbnailUrl"
+          [alt]="playlist.title" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">{{ playlist.title }}</h2>
+        <p>{{ playlist.description }}</p>
+        <p class="text-sm text-gray-500">By {{ playlist.author }} • {{ playlist.views }} views</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Add to playlist</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
