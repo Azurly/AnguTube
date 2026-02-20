@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Users } from '../../services/users';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,13 @@ import { Users } from '../../services/users';
 })
 export class Login {
   private user = inject(Users);
+  private router = inject(Router);
 
   login(username: string, password: string) {
     const user = this.user.getUserByUsername(username);
     if (user && user.password === password) {
-      this.user.login();
+      this.user.login(user.id);
+      this.router.navigateByUrl('/playlists');
     } else {
       console.error('Invalid login credentials');
     }
